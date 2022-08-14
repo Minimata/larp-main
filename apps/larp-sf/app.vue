@@ -1,5 +1,7 @@
 <template>
   <div>
-    <LarpButton>SF</LarpButton>
+    <NuxtLayout>
+      <NuxtPage />
+    </NuxtLayout>
   </div>
 </template>

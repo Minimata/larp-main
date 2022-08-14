@@ -1,5 +1,5 @@
 <template>
   <div>
-    <LarpButton />
+    <LarpButton>SF</LarpButton>
   </div>
 </template>

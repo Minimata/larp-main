@@ -6,6 +6,6 @@ defineProps({
 
 <template>
   <div>
-    <button :disabled="disabled">COUCOU</button>
+    <button :disabled="disabled"><slot /></button>
   </div>
 </template>

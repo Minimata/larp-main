@@ -1,0 +1,9 @@
+query GetArticles {
+  _helloworld_article {
+    author {
+      name
+    }
+    title
+    id
+  }
+}

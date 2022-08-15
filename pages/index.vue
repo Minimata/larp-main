@@ -2,7 +2,7 @@
   <div>
     <Suspense>
       <BasicInput title="Welcome">
-        <Asynchronous :time="0"> </Asynchronous>
+        <Asynchronous />
       </BasicInput>
       <template #fallback>
         <span>Loading...</span>
@@ -14,9 +14,9 @@
 <script>
 export default {
   methods: {
-    reload() {
-      window.location.reload();
-    },
-  },
-};
+    reload () {
+      window.location.reload()
+    }
+  }
+}
 </script>

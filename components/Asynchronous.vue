@@ -1,21 +1,20 @@
 <script setup lang="ts">
-import { useQuery, gql } from "@urql/vue";
+import { useQuery, gql } from '@urql/vue'
 
-const { time } = defineProps({
-  time: {
-    type: Number,
-    required: true,
-  },
-});
+const { time } = defineProps<{
+  time?: number
+}>()
 
-// Add in a delay to simulate loading data
-await new Promise((resolve: any) => {
-  setTimeout(() => {
-    resolve();
-  }, time);
-});
+if (time) {
+  // Add in a delay to simulate loading data
+  await new Promise((resolve: any) => {
+    setTimeout(() => {
+      resolve()
+    }, time)
+  })
+}
 
-const from = ref(0);
+const from = ref(0)
 const GetArticles = gql`
   query ($offset: Int!, $limit: Int!) {
     _helloworld_article(offset: $offset, limit: $limit) {
@@ -23,20 +22,20 @@ const GetArticles = gql`
       id
     }
   }
-`;
+`
 
 const { data, fetching, error } = await useQuery({
   query: GetArticles,
-  variables: { offset: from, limit: 2 },
-});
+  variables: { offset: from, limit: 2 }
+})
 
 if (error.value) {
-  console.log(error);
+  console.log(error)
 }
 
 const onClick = () => {
-  from.value += 1;
-};
+  from.value += 1
+}
 
 // watch([data, fetching, error], () => {
 //   if (data.value) {
@@ -56,7 +55,9 @@ const onClick = () => {
           <li>{{ article.title }}</li>
         </div>
 
-        <button @click="onClick">Next Page</button>
+        <button @click="onClick">
+          Next Page
+        </button>
       </div>
     </ul>
   </div>

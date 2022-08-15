@@ -1,9 +1,9 @@
 import { defineNuxtConfig } from "nuxt";
-import tailwindConfig from "./tailwind.config.js";
+import tailwindConfig from "./tailwind.config";
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  modules: ["@larp-main/ui", "@nuxtjs/tailwindcss", "@nuxtjs/color-mode"],
+  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/color-mode"],
   colorMode: {
     classSuffix: "",
   },
@@ -42,9 +42,9 @@ export default defineNuxtConfig({
       nhostSubdomain: "tkwleelnoiqszqxnesgw",
       nhostRegion: "eu-central-1",
     },
-    experimental: {
-      asyncEntry: true,
-      reactivityTransform: true,
-    },
+  },
+  experimental: {
+    asyncEntry: true,
+    reactivityTransform: true,
   },
 });

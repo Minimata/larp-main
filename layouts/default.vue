@@ -1,9 +1,9 @@
 <template>
   <div>
-    <div>
-      <span>COUCOU</span>
+    <div class="flex">
+      <Navbar />
     </div>
-    <div>
+    <div class="pl-16">
       <slot />
     </div>
   </div>

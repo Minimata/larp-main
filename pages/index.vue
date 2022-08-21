@@ -1,22 +1,10 @@
 <template>
   <div>
     <Suspense>
-      <BasicInput title="Welcome">
-        <Asynchronous />
-      </BasicInput>
+      <WelcomeComponent></WelcomeComponent>
       <template #fallback>
         <span>Loading...</span>
       </template>
     </Suspense>
   </div>
 </template>
-
-<script>
-export default {
-  methods: {
-    reload () {
-      window.location.reload()
-    }
-  }
-}
-</script>

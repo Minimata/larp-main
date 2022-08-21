@@ -1,14 +1,37 @@
-import { defineNuxtConfig } from "nuxt";
-import tailwindConfig from "./tailwind.config";
+import { defineNuxtConfig } from 'nuxt'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  modules: ["@nuxtjs/tailwindcss", "@nuxtjs/color-mode"],
-  colorMode: {
-    classSuffix: "",
+  modules: ['@nuxtjs/pwa'],
+  firebase: {
+    services: {
+      auth: {
+        ssr: true,
+      },
+      firestore: true,
+      analytics: true,
+    },
+  },
+  pwa: {
+    // disable the modules you don't need
+    meta: false,
+    icon: false,
+    // if you omit a module key form configuration sensible defaults will be applied
+    // manifest: false,
+
+    workbox: {
+      importScripts: ['/firebase-auth-sw.js'],
+      // by default the workbox module will not install the service worker in dev environment to avoid conflicts with HMR
+      // only set this true for testing and remember to always clear your browser cache in development
+      dev: process.env.NODE_ENV === 'development',
+    },
   },
   typescript: {
     strict: true,
+  },
+  buildModules: ['@pinia/nuxt', '@vueuse/nuxt'],
+  vueuse: {
+    ssrHandlers: true,
   },
   build: {
     postcss: {
@@ -19,32 +42,6 @@ export default defineNuxtConfig({
         },
       },
     },
-    transpile: ["@urql/vue"],
   },
-  css: ["~/assets/css/tailwind.css"],
-
-  // Defaults options
-  tailwindcss: {
-    cssPath: "~/assets/css/tailwind.css",
-    configPath: "tailwind.config.js",
-    exposeConfig: false,
-    config: tailwindConfig,
-    injectPosition: 0,
-    viewer: true,
-  },
-
-  runtimeConfig: {
-    // Private config
-    // nhostSubdomain: 'tkwleelnoiqszqxnesgw',
-    // nhostRegion: 'eu-central-1',
-    // Config within public will be also exposed to the client
-    public: {
-      nhostSubdomain: "tkwleelnoiqszqxnesgw",
-      nhostRegion: "eu-central-1",
-    },
-  },
-  experimental: {
-    asyncEntry: true,
-    reactivityTransform: true,
-  },
-});
+  css: ['~/assets/css/tailwind.css'],
+})

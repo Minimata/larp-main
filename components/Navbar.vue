@@ -1,5 +1,10 @@
 <script setup lang="ts">
-import { HomeIcon } from '@heroicons/vue/outline/index.js'
+import {
+  HomeIcon,
+  FireIcon,
+  UserCircleIcon,
+  UserPlusIcon,
+} from '@heroicons/vue/24/outline/index.js'
 
 const buttons = [
   {
@@ -7,6 +12,24 @@ const buttons = [
     icon: HomeIcon,
     to: '/',
     divider: true,
+  },
+  {
+    name: 'Feed',
+    icon: FireIcon,
+    to: '/feed',
+    divider: false,
+  },
+  {
+    name: 'Register',
+    icon: UserPlusIcon,
+    to: '/register',
+    divider: false,
+  },
+  {
+    name: 'Sign In',
+    icon: UserCircleIcon,
+    to: '/signIn',
+    divider: false,
   },
 ]
 </script>

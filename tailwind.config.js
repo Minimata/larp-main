@@ -14,6 +14,7 @@ module.exports = {
       },
     },
   },
+  darkMode: 'class',
   plugins: [require('daisyui')],
   mode: 'jit',
   // daisyUI config (optional)

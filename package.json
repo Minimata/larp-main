@@ -21,7 +21,7 @@
     ]
   },
   "dependencies": {
-    "@heroicons/vue": "^1.0.6",
+    "@heroicons/vue": "^2.0.4",
     "@nuxtjs/pwa": "^3.3.5",
     "commitizen": "^4.2.5",
     "daisyui": "^2.22.0",

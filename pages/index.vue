@@ -1,10 +1,5 @@
 <template>
   <div>
-    <Suspense>
-      <WelcomeComponent></WelcomeComponent>
-      <template #fallback>
-        <span>Loading...</span>
-      </template>
-    </Suspense>
+    <WelcomeComponent></WelcomeComponent>
   </div>
 </template>

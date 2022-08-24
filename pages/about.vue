@@ -1,8 +1,5 @@
 <script setup lang="ts">
 import { useCounterStore } from '@/stores/counter'
-definePageMeta({
-  layout: 'custom',
-})
 const { $api } = useNuxtApp()
 const { x, y } = useMouse()
 onMounted(async () => {

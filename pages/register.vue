@@ -1,4 +1,24 @@
-<script></script>
+<script>
+import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
+
+const email = ref()
+const password = ref()
+
+const register = () => {
+  console.log('coucou')
+  createUserWithEmailAndPassword(getAuth(), email.value, password.value)
+    .then((data) => {
+      console.log(data)
+      const router = useRouter()
+      router.push({ path: '/feed' })
+    })
+    .catch((error) => {
+      console.log(error)
+    })
+}
+
+const signUpGoogle = () => {}
+</script>
 
 <template>
   <div>
@@ -15,6 +35,7 @@
                 <span class="label-text">Email</span>
               </label>
               <input
+                v-model="email"
                 type="text"
                 placeholder="email"
                 class="input input-bordered"
@@ -25,6 +46,7 @@
                 <span class="label-text">Password</span>
               </label>
               <input
+                v-model="password"
                 type="text"
                 placeholder="password"
                 class="input input-bordered"

@@ -1,4 +1,31 @@
-<script></script>
+<script setup lang="ts">
+import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+
+const email = ref()
+const password = ref()
+
+const login = () => {
+  signInWithEmailAndPassword(getAuth(), email.value, password.value)
+    .then((data) => {
+      console.log(data)
+      const router = useRouter()
+      router.push({ path: '/feed' })
+    })
+    .catch((error) => {
+      const errorMessages: { [key: string]: any } = {
+        'auth/invalid-email': 'Invalid email',
+        'auth/user-not-found': 'No user with that email was found',
+        'auth/wrong-password': 'Incorrect password',
+        'auth/user-disabled': 'Your account was disabled',
+      }
+      const errorMsg =
+        errorMessages[error.code] ?? 'Email or password was incorrect'
+      console.log(error)
+    })
+}
+
+const signInGoogle = () => {}
+</script>
 
 <template>
   <div>
@@ -15,6 +42,7 @@
                 <span class="label-text">Email</span>
               </label>
               <input
+                v-model="email"
                 type="text"
                 placeholder="email"
                 class="input input-bordered"
@@ -25,7 +53,8 @@
                 <span class="label-text">Password</span>
               </label>
               <input
-                type="text"
+                v-model="password"
+                type="password"
                 placeholder="password"
                 class="input input-bordered"
               />
@@ -36,12 +65,12 @@
               </label>
             </div>
             <div class="form-control mt-6">
-              <button class="btn btn-primary">Login</button>
+              <button class="btn btn-primary" @click="login">Login</button>
             </div>
           </div>
         </div>
         <div class="badge badge-lg">OR</div>
-        <button class="btn gap-2" @click="signUpGoogle">
+        <button class="btn gap-2" @click="signInGoogle">
           Login with Google
         </button>
       </div>

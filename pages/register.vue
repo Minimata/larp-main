@@ -1,4 +1,4 @@
-<script>
+<script setup lang="ts">
 import { getAuth, createUserWithEmailAndPassword } from 'firebase/auth'
 
 const email = ref()
@@ -47,7 +47,7 @@ const signUpGoogle = () => {}
               </label>
               <input
                 v-model="password"
-                type="text"
+                type="password"
                 placeholder="password"
                 class="input input-bordered"
               />

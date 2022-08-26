@@ -2,7 +2,8 @@ import { defineNuxtConfig } from 'nuxt'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  modules: ['@nuxtjs/pwa'],
+  modules: ['@nuxtjs/pwa', '@pinia/nuxt', '@vueuse/nuxt'],
+  // buildModules: ['@pinia/nuxt', '@vueuse/nuxt'],
   firebase: {
     services: {
       auth: {
@@ -11,6 +12,9 @@ export default defineNuxtConfig({
       firestore: true,
       analytics: true,
     },
+  },
+  pinia: {
+    autoImports: ['defineStore'],
   },
   pwa: {
     // disable the modules you don't need
@@ -29,7 +33,6 @@ export default defineNuxtConfig({
   typescript: {
     strict: true,
   },
-  buildModules: ['@pinia/nuxt', '@vueuse/nuxt'],
   vueuse: {
     ssrHandlers: true,
   },

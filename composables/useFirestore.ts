@@ -14,4 +14,9 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig)
 const db = getFirestore(app)
 
-export { db }
+// export const useFirestore = () => {
+//   return useState('db', () => db)
+// }
+export const useFirestore = () => {
+  return useState('db', () => db)
+}

@@ -1,11 +1,4 @@
-<script setup lang="ts">
-import { doc, getDoc } from 'firebase/firestore'
-import { db } from '~~/firebase'
-
-const firstDocumentRef = doc(db, 'firstCollection', 'firstDocument')
-const firstDoc = await getDoc(firstDocumentRef)
-console.log(firstDoc.data())
-</script>
+<script setup lang="ts"></script>
 
 <template>
   <div>

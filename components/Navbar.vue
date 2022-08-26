@@ -4,6 +4,7 @@ import {
   FireIcon,
   UserCircleIcon,
   UserPlusIcon,
+  PaperAirplaneIcon,
 } from '@heroicons/vue/24/outline/index.js'
 
 const buttons = [
@@ -11,6 +12,12 @@ const buttons = [
     name: 'Home',
     icon: HomeIcon,
     to: '/',
+    divider: true,
+  },
+  {
+    name: 'Ship',
+    icon: PaperAirplaneIcon,
+    to: '/ship',
     divider: true,
   },
   {

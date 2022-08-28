@@ -7,6 +7,11 @@ export default defineEventHandler(async (event) => {
     where: {
       id: 1,
     },
+    select: {
+      food: true,
+      oxygen: true,
+      energy: true,
+    },
   })
 
   return data

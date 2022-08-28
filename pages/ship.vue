@@ -3,15 +3,18 @@ const { data: ship } = await useFetch('/api/ship', {
   key: 'global ship data',
   headers: useRequestHeaders(['cookie']),
 })
+
+const energyPercent = ref(ship.value!.energy * 100)
 </script>
 
 <template>
   <div>
+    <div>{{ energyPercent }}</div>
     <div class="flex flex-row justify-center">
       <div class="flex h-24 flex-col justify-center">
         <progress
           class="progress progress-accent w-56"
-          value="{{ ship.energy * 100 }}"
+          :value="energyPercent"
           max="100"
         ></progress>
         <progress

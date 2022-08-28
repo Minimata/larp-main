@@ -20,24 +20,6 @@ const buttons = [
     to: '/ship',
     divider: true,
   },
-  {
-    name: 'Feed',
-    icon: FireIcon,
-    to: '/feed',
-    divider: false,
-  },
-  {
-    name: 'Register',
-    icon: UserPlusIcon,
-    to: '/register',
-    divider: false,
-  },
-  {
-    name: 'Sign In',
-    icon: UserCircleIcon,
-    to: '/signIn',
-    divider: false,
-  },
 ]
 </script>
 

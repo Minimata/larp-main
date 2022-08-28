@@ -1,5 +1,7 @@
 <script setup lang="ts">
+const router = useRouter()
 const client = useSupabaseClient()
+const user = useSupabaseUser()
 
 const email = ref('')
 const password = ref('')
@@ -21,60 +23,86 @@ const login = async () => {
   console.log(user)
   console.log(error)
 }
+const logout = async () => {
+  await client.auth.signOut()
+}
+
+// onMounted(() => {
+//   watchEffect(() => {
+//     if (!user.value) {
+//       navigateTo('/')
+//     }
+//   })
+// })
+// watch([data, fetching, error], () => {
+//   if (data.value) {
+//     const articles = data.value._helloworld_article;
+//     articles.forEach((article: { title: string; author: any }) => {
+//       console.log(article.title);
+//     });
+//   }
+// });
 </script>
 
 <template>
   <div>
-    <div class="hero min-h-screen bg-base-200">
-      <div class="hero-content flex-col lg:flex-col">
-        <div class="text-center lg:text-left">
-          <h1 class="text-5xl font-bold">Login</h1>
-        </div>
-        <div class="card w-full max-w-sm flex-shrink-0 bg-base-100 shadow-2xl">
-          <div class="card-body">
-            <div class="form-control">
-              <label class="label">
-                <span class="label-text">Email</span>
-              </label>
-              <input
-                v-model="email"
-                type="text"
-                placeholder="email"
-                class="input input-bordered"
-              />
-            </div>
-            <div class="form-control">
-              <label class="label">
-                <span class="label-text">Password</span>
-              </label>
-              <input
-                v-model="password"
-                type="password"
-                placeholder="password"
-                class="input input-bordered"
-              />
-              <label v-if="!isSignUp" class="label">
-                <a href="#" class="link link-hover label-text-alt"
-                  >Forgot password?</a
+    <div v-if="user!">
+      <button class="btn btn-secondary" @click="logout">Log Out</button>
+    </div>
+    <div v-else>
+      <div class="hero min-h-screen bg-base-200">
+        <div class="hero-content flex-col lg:flex-col">
+          <div class="text-center lg:text-left">
+            <h1 class="text-5xl font-bold">Login</h1>
+          </div>
+          <div
+            class="card w-full max-w-sm flex-shrink-0 bg-base-100 shadow-2xl"
+          >
+            <div class="card-body">
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Email</span>
+                </label>
+                <input
+                  v-model="email"
+                  type="text"
+                  placeholder="email"
+                  class="input input-bordered"
+                />
+              </div>
+              <div class="form-control">
+                <label class="label">
+                  <span class="label-text">Password</span>
+                </label>
+                <input
+                  v-model="password"
+                  type="password"
+                  placeholder="password"
+                  class="input input-bordered"
+                />
+                <label v-if="!isSignUp" class="label">
+                  <a href="#" class="link link-hover label-text-alt"
+                    >Forgot password?</a
+                  >
+                </label>
+              </div>
+              <div class="form-control mt-6">
+                <button
+                  class="btn btn-primary"
+                  @click="() => (isSignUp ? signUp() : login())"
                 >
-              </label>
-            </div>
-            <div class="form-control mt-6">
-              <button
-                class="btn btn-primary"
-                @click="() => (isSignUp ? signUp() : login())"
-              >
-                <span v-if="isSignUp">Sign up</span>
-                <span v-else>Login</span>
-              </button>
+                  <span v-if="isSignUp">Sign up</span>
+                  <span v-else>Login</span>
+                </button>
+              </div>
             </div>
           </div>
+          <div class="badge badge-lg">OR</div>
+          <button class="btn gap-2" @click="isSignUp = !isSignUp">
+            <span v-if="isSignUp">Login instead</span>
+            <span v-else>Sign up instead</span>
+          </button>
         </div>
-        <div class="badge badge-lg">OR</div>
-        <button class="btn gap-2" @click="isSignUp = !isSignUp">
-          <span v-if="isSignUp">Login instead</span>
-          <span v-else>Sign up instead</span>
-        </button>
       </div>
     </div>
   </div>

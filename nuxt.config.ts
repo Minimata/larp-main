@@ -28,4 +28,8 @@ export default defineNuxtConfig({
     },
   },
   css: ['~/assets/css/tailwind.css'],
+  runtimeConfig: {
+    databaseURL:
+      'postgresql://postgres:alexandreserex94@db.vngcslghbcwbraflzlcf.supabase.co:5432/postgres',
+  },
 })

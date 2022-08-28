@@ -1,4 +1,12 @@
 <script setup lang="ts">
+import { RealtimeClient } from '@supabase/realtime-js'
+const config = useRuntimeConfig()
+const realtimeClient = new RealtimeClient(config.databaseURL)
+// const channel = realtimeClient
+//   .channel('db-changes')
+//   .on('postgres_changes', { event: '*', schema: '*' })
+//   .subscribe()
+
 const { data: ship } = await useFetch('/api/ship', {
   key: 'global ship data',
   headers: useRequestHeaders(['cookie']),

@@ -12,13 +12,19 @@ const buttons = [
     name: 'Home',
     icon: HomeIcon,
     to: '/',
-    divider: true,
+    divider: false,
   },
   {
     name: 'Ship',
     icon: PaperAirplaneIcon,
     to: '/ship',
     divider: true,
+  },
+  {
+    name: 'Login',
+    icon: UserPlusIcon,
+    to: '/login',
+    divider: false,
   },
 ]
 </script>

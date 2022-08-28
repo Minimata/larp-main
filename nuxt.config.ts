@@ -2,7 +2,12 @@ import { defineNuxtConfig } from 'nuxt'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  modules: ['@pinia/nuxt', '@vueuse/nuxt', '@nuxtjs/supabase'],
+  modules: [
+    '@pinia/nuxt',
+    '@vueuse/nuxt',
+    '@nuxtjs/supabase',
+    '@nuxtjs/tailwindcss',
+  ],
   pinia: {
     autoImports: ['defineStore'],
   },

@@ -7,11 +7,11 @@ const { data: serverData } = useFetch('/api/ship')
 // Client Side
 const clientData = ref({})
 
-onMounted(async () => {
+onMounted(() => {
   const { firestore } = useFirebase()
   const docRef = doc(firestore, 'ship', 'ship')
   onSnapshot(docRef, (snap) => {
-    clientData.value = snap.data()
+    clientData.value = snap.data()!
     // serverData.value = snap.data();
   })
 })

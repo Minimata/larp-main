@@ -2049,6 +2049,27 @@
     estree-walker "^2.0.1"
     picomatch "^2.2.2"
 
+"@storyblok/js@^1.7.2":
+  version "1.7.2"
+  resolved "https://registry.yarnpkg.com/@storyblok/js/-/js-1.7.2.tgz#b4c6f26a14ddd8b9afa59af164dcb4c94d05e94b"
+  integrity sha512-AYAd9sxiAzMS3lGDdCCPnk6Fqws1Ix5Vr+gByWK7u3ygaNtGrwdsQvKtx7KV0KoPCaDmlk1t6Gp5GNy/4dSI1w==
+  dependencies:
+    storyblok-js-client "^4.5.6"
+
+"@storyblok/nuxt@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@storyblok/nuxt/-/nuxt-4.2.0.tgz#6bb1f25c97a8037eeb352e5b38c4bedce6a00e9d"
+  integrity sha512-NfA8UqDWFa+caS9K2FcwwHblckoHFkjeqlTJdptB5NZRhUVEFnwTGVWL6ALwGQPqCKvt1dURWLtdQ6xVcnXHsg==
+  dependencies:
+    "@storyblok/vue" "^6.2.1"
+
+"@storyblok/vue@^6.2.1":
+  version "6.2.1"
+  resolved "https://registry.yarnpkg.com/@storyblok/vue/-/vue-6.2.1.tgz#a82a05ff4bf4915e9502d236dea7071f051117aa"
+  integrity sha512-FTBt0PsVuNWLeEF06CcMwFT44OAGBy5xD927k3r1HOMrP5trZGi0Hvfd+DvLquO5Tg+tiBgfCL6NK1w/Capdng==
+  dependencies:
+    "@storyblok/js" "^1.7.2"
+
 "@tootallnate/once@2":
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/@tootallnate/once/-/once-2.0.0.tgz#f544a148d3ab35801c1f633a7441fd87c2e484bf"
@@ -8707,6 +8728,11 @@ std-env@^3.1.1:
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/std-env/-/std-env-3.2.1.tgz#00e260ec3901333537125f81282b9296b00d7304"
   integrity sha512-D/uYFWkI/31OrnKmXZqGAGK5GbQRPp/BWA1nuITcc6ICblhhuQUPHS5E2GSCVS7Hwhf4ciq8qsATwBUxv+lI6w==
+
+storyblok-js-client@^4.5.6:
+  version "4.5.6"
+  resolved "https://registry.yarnpkg.com/storyblok-js-client/-/storyblok-js-client-4.5.6.tgz#caab0bb1ead8618f84afcc35be9305883d85e628"
+  integrity sha512-S0cXKkEqGDibD32K48FFodjeu/+eF++nrHhrLzo/bKxrnyQiPChPccFAnzsJCQ6uMvRuVGZzjKwM5/sMeBRthg==
 
 stream-events@^1.0.5:
   version "1.0.5"

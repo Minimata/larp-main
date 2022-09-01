@@ -2,7 +2,12 @@ import { defineNuxtConfig } from 'nuxt'
 
 // https://v3.nuxtjs.org/api/configuration/nuxt.config
 export default defineNuxtConfig({
-  modules: ['@pinia/nuxt', '@vueuse/nuxt', '@nuxtjs/tailwindcss'],
+  modules: [
+    '@pinia/nuxt',
+    '@vueuse/nuxt',
+    '@nuxtjs/tailwindcss',
+    ['@storyblok/nuxt', { accessToken: process.env.STORYBLOK_TOKEN }],
+  ],
   pinia: {
     autoImports: ['defineStore'],
   },

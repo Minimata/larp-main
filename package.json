@@ -1,7 +1,4 @@
 {
-  "name": "larp-main",
-  "version": "1.0.0",
-  "author": "Minimata",
   "private": true,
   "scripts": {
     "build": "nuxt build",
@@ -9,33 +6,32 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "test": "vitest",
-    "lint": "eslint . --ext .ts,.vue"
+    "lint": "eslint . --ext .ts,.vue,.js"
   },
   "devDependencies": {
     "@nuxt/test-utils": "^3.0.0-rc.8",
-    "@nuxtjs/eslint-config-typescript": "^10.0.0",
-    "@nuxtjs/supabase": "^0.1.23",
+    "@nuxtjs/eslint-config-typescript": "^11.0.0",
     "@nuxtjs/tailwindcss": "^5.3.2",
     "@pinia/nuxt": "^0.4.1",
     "@vueuse/nuxt": "^9.1.1",
+    "axios": "^0.27.2",
     "eslint": "^8.23.0",
     "eslint-config-prettier": "^8.5.0",
-    "eslint-plugin-nuxt": "^3.2.0",
+    "eslint-plugin-nuxt": "^4.0.0",
     "eslint-plugin-prettier": "^4.2.1",
     "nuxt": "3.0.0-rc.8",
-    "pinia": "^2.0.21",
     "postcss": "^8.4.16",
     "postcss-custom-properties": "^12.1.8",
     "prettier": "^2.7.1",
     "prettier-plugin-tailwindcss": "^0.1.13",
-    "prisma": "^4.2.1",
-    "tailwindcss": "^3.1.8",
+    "testcafe": "^2.0.0",
     "typescript": "^4.8.2",
     "vitest": "^0.22.1"
   },
   "dependencies": {
-    "@heroicons/vue": "^2.0.8",
-    "@prisma/client": "^4.2.1",
-    "daisyui": "^2.24.0"
+    "@heroicons/vue": "^2.0.10",
+    "daisyui": "^2.24.0",
+    "firebase": "^9.9.3",
+    "firebase-admin": "^11.0.1"
   }
 }

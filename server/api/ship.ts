@@ -1,18 +1,8 @@
-import { PrismaClient } from '@prisma/client'
-
-const prisma = new PrismaClient()
+import { firestore } from '../utils/firebase'
 
 export default defineEventHandler(async (event) => {
-  const data = await prisma.ship.findUnique({
-    where: {
-      id: 1,
-    },
-    select: {
-      food: true,
-      oxygen: true,
-      energy: true,
-    },
-  })
-
+  const ref = firestore.doc(`ship/ship`)
+  const snapshot = await ref.get()
+  const data = snapshot.data()
   return data
 })

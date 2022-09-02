@@ -1,5 +1,7 @@
 <template>
-  <div class="flex justify-center pl-16">
-    <slot />
+  <div class="flex w-screen justify-center">
+    <div class="w-11/12">
+      <slot />
+    </div>
   </div>
 </template>

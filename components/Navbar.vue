@@ -9,41 +9,40 @@ import {
 
 const buttons = [
   {
-    name: 'Home',
+    name: 'Overview',
     icon: HomeIcon,
     to: '/',
+    divider: true,
+  },
+  {
+    name: 'Ship',
+    icon: PaperAirplaneIcon,
+    to: '/ship',
+    divider: false,
+  },
+  {
+    name: 'Main room',
+    icon: UserCircleIcon,
+    to: '/main-room',
     divider: true,
   },
 ]
 </script>
 
 <template>
-  <div class="fixed top-0 left-0 flex h-screen w-16 flex-col shadow-lg">
-    <div>
-      <ul>
-        <div>
-          <div v-for="button in buttons" :key="button.name">
-            <li>
-              <NuxtLink :to="button.to">
-                <NavbarIcon
-                  :name="button.name"
-                  :icon="button.icon"
-                  :divider="button.divider"
-                />
-              </NuxtLink>
-            </li>
-          </div>
-        </div>
-      </ul>
+  <div class="btm-nav h-16 shadow-inner">
+    <div class="sidebar-icon" v-for="button in buttons" :key="button.name">
+      <NuxtLink :to="button.to">
+        <component
+          :is="button.icon"
+          class="h-5 w-5"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+        />
+      </NuxtLink>
+      <NuxtLink :to="button.to">
+        <span class="btm-nav-label">{{ button.name }}</span>
+      </NuxtLink>
     </div>
-    <div class="grow" />
-    <!-- <div>
-      <NavbarIcon
-        @click="
-          setColorTheme($colorMode.preference == 'dark' ? 'light' : 'dark')
-        "
-        :icon="$colorMode.preference == 'dark' ? SunIcon : MoonIcon"
-      />
-    </div> -->
   </div>
 </template>

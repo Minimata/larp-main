@@ -1,10 +1,10 @@
 <template>
   <div>
-    <div class="flex"><Navbar></Navbar></div>
+    <Navbar></Navbar>
     <Suspense>
-      <div class="pl-16">
+      <ContentHolder>
         <slot />
-      </div>
+      </ContentHolder>
       <template #fallback>
         <span>Loading...</span>
       </template>

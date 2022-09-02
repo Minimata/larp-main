@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { doc, onSnapshot, getDoc, updateDoc } from 'firebase/firestore'
+import ShipOverview from '~~/components/ShipOverview.vue'
 
 // Server Side
 const { data: serverData } = useFetch('/api/ship')
@@ -26,11 +27,13 @@ const updateShip = async () => {
 </script>
 
 <template>
-  <div>
-    <h2>Server</h2>
-    <pre>{{ serverData }}</pre>
-    <h2>Client</h2>
-    <pre>{{ clientData }}</pre>
-    <button @click="updateShip">Update</button>
+  <div class="flex">
+    <ShipOverview>
+      <h2>Server</h2>
+      <pre>{{ serverData }}</pre>
+      <h2>Client</h2>
+      <pre>{{ clientData }}</pre>
+      <button @click="updateShip">Update</button>
+    </ShipOverview>
   </div>
 </template>

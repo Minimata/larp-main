@@ -22,7 +22,7 @@ interface IGrowthUtils {
 const signToGrowthMap = new Map<number, IGrowthUtils>([
   [1, { color: 'text-success', icon: ArrowTrendingUpIcon }],
   [0, { color: '', icon: Bars2Icon }],
-  [-1, { color: 'text-warning', icon: AdjustmentsVerticalIcon }],
+  [-1, { color: 'text-warning', icon: ArrowTrendingDownIcon }],
 ])
 
 const growthInfo = signToGrowthMap.get(Math.sign(props.growth))

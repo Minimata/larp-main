@@ -9,26 +9,37 @@ import {
 
 import { doc, onSnapshot, getDoc, updateDoc } from 'firebase/firestore'
 import Percentage from './Percentage.vue'
+import SummaryPanel from './SummaryPanel.vue'
 
 // Server Side
 const energyPercent = ref(50)
 const foodPercent = ref(50)
 const oxygenPercent = ref(50)
+const energyGrowthPercent = ref(50)
+const foodGrowthPercent = ref(50)
+const oxygenGrowthPercent = ref(50)
 
 useFetch('/api/ship').then((result) => {
   energyPercent.value = result.data.value.energy * 100
   foodPercent.value = result.data.value.food * 100
   oxygenPercent.value = result.data.value.oxygen * 100
+  energyGrowthPercent.value = result.data.value.energyGrowth * 100
+  foodGrowthPercent.value = result.data.value.foodGrowth * 100
+  oxygenGrowthPercent.value = result.data.value.oxygenGrowth * 100
 })
 
 onMounted(() => {
   const { firestore } = useFirebase()
   const docRef = doc(firestore, 'ship', 'ship')
   onSnapshot(docRef, (snap) => {
-    const { energy, food, oxygen } = snap.data()!
+    const { energy, food, oxygen, energyGrowth, foodGrowth, oxygenGrowth } =
+      snap.data()!
     energyPercent.value = energy * 100
     foodPercent.value = food * 100
     oxygenPercent.value = oxygen * 100
+    energyGrowthPercent.value = energyGrowth * 100
+    foodGrowthPercent.value = foodGrowth * 100
+    oxygenGrowthPercent.value = oxygenGrowth * 100
   })
 })
 
@@ -42,38 +53,38 @@ const updateShip = async () => {
 </script>
 
 <template>
-  <div
-    class="flex w-full flex-col items-center space-x-4 rounded-xl p-6 shadow-lg"
-  >
-    <div class="flex w-full flex-row items-center">
-      <div class="text-2xl font-bold">Ship overview</div>
-      <div class="grow"></div>
-      <button class="btn btn-outline btn-circle h-12 w-12">
-        <component :is="ArrowRightIcon" aria-hidden="true" />
-      </button>
-    </div>
+  <div class="w-full">
+    <SummaryPanel title="Ship overview">
+      <Percentage
+        name="Energy"
+        :growth="energyGrowthPercent"
+        :percent="energyPercent"
+        color="progress-info"
+      ></Percentage>
 
-    <Percentage
-      name="Energy"
-      :growth="23"
-      :percent="energyPercent"
-      color="progress-info"
-    ></Percentage>
+      <Percentage
+        name="Food"
+        :growth="foodGrowthPercent"
+        :percent="foodPercent"
+        color="progress-accent"
+      ></Percentage>
 
-    <Percentage
-      name="Food"
-      :growth="0"
-      :percent="foodPercent"
-      color="progress-accent"
-    ></Percentage>
+      <Percentage
+        name="Oxygen"
+        :growth="oxygenGrowthPercent"
+        :percent="oxygenPercent"
+        color="progress-primary"
+      ></Percentage>
+      <!-- <button @click="updateShip">Update</button> -->
+    </SummaryPanel>
 
-    <Percentage
-      name="Oxygen"
-      :growth="-5"
-      :percent="oxygenPercent"
-      color="progress-primary"
-    ></Percentage>
-    <!-- <button @click="updateShip">Update</button> -->
-    <slot />
+    <SummaryPanel title="Crew overview">
+      <Percentage
+        name="Member 1"
+        :growth="energyGrowthPercent"
+        :percent="energyPercent"
+        color="progress-info"
+      ></Percentage>
+    </SummaryPanel>
   </div>
 </template>

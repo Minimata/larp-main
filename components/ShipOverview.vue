@@ -79,12 +79,14 @@ const updateShip = async () => {
     </SummaryPanel>
 
     <SummaryPanel title="Crew overview">
-      <Percentage
+      <MemberSummary
         name="Member 1"
-        :growth="energyGrowthPercent"
-        :percent="energyPercent"
-        color="progress-info"
-      ></Percentage>
+        :energy="1"
+        :food="1"
+        :oxygen="1"
+        :radiation="1"
+      >
+      </MemberSummary>
     </SummaryPanel>
   </div>
 </template>
